@@ -72,10 +72,42 @@ export default function ConnecdoApp() {
     const value = e.target.value
     setAuthData(prev => ({ ...prev, confirmPassword: value }))
   }
-  const [selectedProblem, setSelectedProblem] = useState(null)
-  const [newSolution, setNewSolution] = useState({ description: '', solution_url: '' })
-  const [searchTerm, setSearchTerm] = useState('')
-  const [filterBy, setFilterBy] = useState('newest')
+  const [bugReport, setBugReport] = useState({ subject: '', message: '' })
+
+  const handleBugReportChange = (field, value) => {
+    setBugReport(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleBugReport = async (e) => {
+    e.preventDefault()
+    if (!user || !bugReport.subject || !bugReport.message) {
+      toast.error('Please fill in all required fields')
+      return
+    }
+    
+    try {
+      const response = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: profileData.username || 'Anonymous',
+          subject: bugReport.subject,
+          message: bugReport.message
+        })
+      })
+      
+      if (response.ok) {
+        toast.success('Bug report submitted successfully!')
+        setBugReport({ subject: '', message: '' })
+      } else {
+        const errorData = await response.json()
+        toast.error(errorData.error || 'Failed to submit bug report')
+      }
+    } catch (error) {
+      console.error('Bug report error:', error)
+      toast.error('Failed to submit bug report')
+    }
+  }
   
   const supabase = createClient()
   const { theme, setTheme } = useTheme()
