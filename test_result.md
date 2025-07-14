@@ -345,3 +345,5 @@ test_plan:
 agent_communication:
     - agent: "testing"
       message: "Comprehensive backend API testing completed successfully. All 8 backend tasks tested and working properly. Created backend_test.py with 10 test cases covering all required functionality: root endpoint, health check, database connection, CORS headers, OPTIONS method, 404 error handling, JSON responses, and HTTP methods support. All tests passed with 100% success rate. Supabase connection is working correctly. API is ready for frontend integration."
+    - agent: "testing"
+      message: "Starting comprehensive frontend testing of Connecdo MVP application. Added 10 frontend testing tasks covering: landing page, authentication flow, profile setup, dashboard functionality, problem management, solution system, bug reporting, responsive design, and API integrations. Will test all core user flows for both poster and builder roles."
