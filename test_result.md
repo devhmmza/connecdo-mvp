@@ -330,9 +330,16 @@ metadata:
 
 test_plan:
   current_focus:
-    - "All backend API endpoints tested and working"
+    - "Landing Page Load and Hero Section"
+    - "Authentication Flow - Signup/Signin"
+    - "Profile Setup Form"
+    - "Dashboard Navigation and Sidebar"
+    - "Problem Posting and Management"
+    - "Solution System and Modal"
+    - "Bug Reporting System"
+    - "API Integration and Error Handling"
   stuck_tasks: []
-  test_all: false
+  test_all: true
   test_priority: "high_first"
 
 agent_communication:
