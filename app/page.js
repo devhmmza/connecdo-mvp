@@ -56,6 +56,22 @@ export default function ConnecdoApp() {
   const [newProblem, setNewProblem] = useState({ title: '', description: '', tags: '' })
   const [profileData, setProfileData] = useState({ username: '', role: '', bio: '' })
   const [authData, setAuthData] = useState({ email: '', password: '', confirmPassword: '' })
+
+  // Optimized handlers to prevent input locking
+  const handleEmailChange = (e) => {
+    const value = e.target.value
+    setAuthData(prev => ({ ...prev, email: value }))
+  }
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value
+    setAuthData(prev => ({ ...prev, password: value }))
+  }
+
+  const handleConfirmPasswordChange = (e) => {
+    const value = e.target.value
+    setAuthData(prev => ({ ...prev, confirmPassword: value }))
+  }
   const [selectedProblem, setSelectedProblem] = useState(null)
   const [newSolution, setNewSolution] = useState({ description: '', solution_url: '' })
   const [searchTerm, setSearchTerm] = useState('')
