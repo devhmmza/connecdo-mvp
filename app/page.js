@@ -506,7 +506,7 @@ export default function ConnecdoApp() {
                   type="email"
                   placeholder="Enter your email"
                   value={authData.email}
-                  onChange={(e) => setAuthData({...authData, email: e.target.value})}
+                  onChange={handleEmailChange}
                   required
                 />
               </div>
@@ -517,7 +517,7 @@ export default function ConnecdoApp() {
                   type="password"
                   placeholder="Enter your password"
                   value={authData.password}
-                  onChange={(e) => setAuthData({...authData, password: e.target.value})}
+                  onChange={handlePasswordChange}
                   required
                 />
               </div>
@@ -529,7 +529,7 @@ export default function ConnecdoApp() {
                     type="password"
                     placeholder="Confirm your password"
                     value={authData.confirmPassword}
-                    onChange={(e) => setAuthData({...authData, confirmPassword: e.target.value})}
+                    onChange={handleConfirmPasswordChange}
                     required
                   />
                 </div>
