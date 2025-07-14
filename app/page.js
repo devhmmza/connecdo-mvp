@@ -1049,12 +1049,15 @@ export default function ConnecdoApp() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
+                    <form onSubmit={handleBugReport} className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="bug-subject">Subject</Label>
                         <Input
                           id="bug-subject"
                           placeholder="Brief description of the issue"
+                          value={bugReport.subject}
+                          onChange={(e) => setBugReport(prev => ({ ...prev, subject: e.target.value }))}
+                          required
                         />
                       </div>
                       <div className="space-y-2">
@@ -1062,14 +1065,17 @@ export default function ConnecdoApp() {
                         <Textarea
                           id="bug-message"
                           placeholder="Please describe the bug in detail..."
+                          value={bugReport.message}
+                          onChange={(e) => setBugReport(prev => ({ ...prev, message: e.target.value }))}
                           rows={6}
+                          required
                         />
                       </div>
-                      <Button className="w-full">
+                      <Button type="submit" className="w-full">
                         <Bug className="w-4 h-4 mr-2" />
                         Submit Bug Report
                       </Button>
-                    </div>
+                    </form>
                   </CardContent>
                 </Card>
               )}
