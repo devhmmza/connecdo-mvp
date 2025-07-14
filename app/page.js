@@ -437,14 +437,20 @@ export default function ConnecdoApp() {
               <span className="font-semibold">Connecdo</span>
             </div>
             <div className="flex space-x-4">
-              <Button variant="ghost" size="icon">
-                <Github className="w-4 h-4" />
+              <Button variant="ghost" size="icon" asChild>
+                <a href="https://github.com/devhmmza" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4" />
+                </a>
               </Button>
-              <Button variant="ghost" size="icon">
-                <Twitter className="w-4 h-4" />
+              <Button variant="ghost" size="icon" asChild>
+                <a href="https://twitter.com/PyHamza" target="_blank" rel="noopener noreferrer">
+                  <Twitter className="w-4 h-4" />
+                </a>
               </Button>
-              <Button variant="ghost" size="icon">
-                <Mail className="w-4 h-4" />
+              <Button variant="ghost" size="icon" asChild>
+                <a href="mailto:hmmza.py@gmail.com">
+                  <Mail className="w-4 h-4" />
+                </a>
               </Button>
             </div>
           </div>
