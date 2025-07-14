@@ -320,6 +320,38 @@ export default function ConnecdoApp() {
     }
   }
 
+  // Bug report handler
+  const handleBugReport = async (e) => {
+    e.preventDefault()
+    if (!user || !bugReport.subject || !bugReport.message) {
+      toast.error('Please fill in all required fields')
+      return
+    }
+    
+    try {
+      const response = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: profileData.username || 'Anonymous',
+          subject: bugReport.subject,
+          message: bugReport.message
+        })
+      })
+      
+      if (response.ok) {
+        toast.success('Bug report submitted successfully!')
+        setBugReport({ subject: '', message: '' })
+      } else {
+        const errorData = await response.json()
+        toast.error(errorData.error || 'Failed to submit bug report')
+      }
+    } catch (error) {
+      console.error('Bug report error:', error)
+      toast.error('Failed to submit bug report')
+    }
+  }
+
   // Landing page component
   const LandingPage = () => (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
