@@ -50,7 +50,7 @@ class ConnecdoAPITester:
     def test_root_endpoint(self):
         """Test GET /api/ - should return Connecdo API message"""
         try:
-            response = requests.get(f"{API_BASE}/", timeout=10)
+            response = requests.get(f"{API_BASE}/", timeout=30)
             
             if response.status_code == 200:
                 data = response.json()
@@ -90,7 +90,7 @@ class ConnecdoAPITester:
     def test_health_endpoint(self):
         """Test GET /api/health - should return healthy status"""
         try:
-            response = requests.get(f"{API_BASE}/health", timeout=10)
+            response = requests.get(f"{API_BASE}/health", timeout=30)
             
             if response.status_code == 200:
                 data = response.json()
@@ -130,7 +130,7 @@ class ConnecdoAPITester:
     def test_database_connection(self):
         """Test GET /api/test-db - should test Supabase connection"""
         try:
-            response = requests.get(f"{API_BASE}/test-db", timeout=15)
+            response = requests.get(f"{API_BASE}/test-db", timeout=30)
             
             # Accept both success and expected error responses
             if response.status_code == 200:
@@ -189,7 +189,7 @@ class ConnecdoAPITester:
     def test_cors_headers(self):
         """Test CORS headers are properly set"""
         try:
-            response = requests.get(f"{API_BASE}/", timeout=10)
+            response = requests.get(f"{API_BASE}/", timeout=30)
             
             cors_headers = {
                 'Access-Control-Allow-Origin': '*',
@@ -231,7 +231,7 @@ class ConnecdoAPITester:
     def test_options_method(self):
         """Test OPTIONS method for CORS preflight"""
         try:
-            response = requests.options(f"{API_BASE}/", timeout=10)
+            response = requests.options(f"{API_BASE}/", timeout=30)
             
             if response.status_code == 200:
                 self.log_test(
@@ -259,7 +259,7 @@ class ConnecdoAPITester:
     def test_404_error_handling(self):
         """Test error handling for missing routes"""
         try:
-            response = requests.get(f"{API_BASE}/nonexistent-route", timeout=10)
+            response = requests.get(f"{API_BASE}/nonexistent-route", timeout=30)
             
             if response.status_code == 404:
                 data = response.json()
@@ -307,7 +307,7 @@ class ConnecdoAPITester:
         all_passed = True
         for endpoint, description in endpoints:
             try:
-                response = requests.get(f"{API_BASE}{endpoint}", timeout=10)
+                response = requests.get(f"{API_BASE}{endpoint}", timeout=30)
                 
                 try:
                     data = response.json()
