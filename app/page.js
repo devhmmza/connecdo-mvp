@@ -449,7 +449,7 @@ export default function ConnecdoApp() {
             </div>
           </div>
           <div className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-            © 2024 Connecdo. Connecting ideas with builders.
+            © 2025 Connecdo. Connecting ideas with builders.
           </div>
         </div>
       </footer>
